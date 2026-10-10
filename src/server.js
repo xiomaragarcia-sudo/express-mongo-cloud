@@ -1,6 +1,3 @@
-import dns from 'dns';
-dns.setServers(['1.1.1.1', '8.8.8.8']);
-
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import app from './app.js';
@@ -13,6 +10,6 @@ const MONGO_URI = process.env.MONGO_URI;
 mongoose.connect(MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB Atlas');
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
   })
   .catch(err => console.error('MongoDB connection error:', err));
